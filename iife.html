@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>IIFE Example</title>
+    </head>
+    <body>
+        Click a button:
+    </body>
+</html>
+
+<script type="text/javascript">
+    for (var i = 0; i < 10; i++) {
+        var btn = document.createElement('button');
+        btn.innerHTML = "Button" + i;
+        document.getElementsByTagName('body')[0].appendChild(btn);
+
+        (function(lockedIndex){
+            btn.onclick = function(){
+                console.log(lockedIndex + 1);
+            }
+        })(i);
+    };
+
+</script>
