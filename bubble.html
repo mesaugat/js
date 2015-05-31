@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Bubble</title>
+        <style type="text/css">
+            #background {
+                height: 300px;
+                width: 600px;
+                background: black;
+            }
+
+            #bubble {
+                height: 40px;
+                width: 40px;
+                border-radius: 100%;
+                background: red;
+                position: absolute;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="background">
+            <div id="bubble">
+            </div>
+        </div>
+    </body>
+
+    <script type="text/javascript">
+
+        var bgY = 300;
+        var bgX = 600;
+
+        var x = 32;     // Bubble Height
+        var y = 32;     // Bubble Width
+
+        var dX = 1;
+        var dY = 1;
+
+        var windowHeight = bgY - y;
+        var windowWidth = bgX - x;
+
+        function gameLoop() {
+            moveBall();
+            collisionDetection();
+        }
+
+        function moveBall()
+        {
+            var ball = document.getElementById('bubble');
+            x += dX;
+            y += dY;
+            ball.style.top = y + "px";
+            ball.style.left = x + "px";
+        }
+
+        function collisionDetection()
+        {
+            if (y > windowHeight || y < 7) {
+                dY = -dY;
+            }
+
+            if (x > windowWidth || x < 7) {
+                dX = -dX;
+            }
+        }
+
+        function game() {
+            setInterval(gameLoop, 10);
+        }
+
+        game();
+    </script>
+</html>
